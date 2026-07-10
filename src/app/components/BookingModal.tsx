@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { X, Check } from 'lucide-react';
 import { Button } from './Button';
-import { cn } from './Button';
 
 interface BookingModalProps {
   isOpen: boolean;
