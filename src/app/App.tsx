@@ -212,7 +212,7 @@ export default function App() {
                 <h3 className="text-xl font-['Barlow_Condensed'] uppercase mb-3 text-white font-bold">
                   {f.title}
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed">
+                <p className="text-white/60 text-sm leading-relaxed text-justify">
                   {f.desc}
                 </p>
               </div>
