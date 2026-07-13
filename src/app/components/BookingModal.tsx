@@ -24,11 +24,18 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
     const formData = new FormData(e.currentTarget)
 
-    const formPhone = formData.get('phone') as string
+    const rawPhone = formData.get('phone') as string
+    let formPhone = rawPhone.replace(/\D/g, '')
+    if (formPhone.startsWith('8')) {
+      formPhone = formPhone.slice(1)
+    }
+    if (formPhone.length === 10) {
+      formPhone = '7' + formPhone
+    }
 
     const data: BookingData = {
       name: formData.get('name') as string,
-      phone: formPhone.replace(/\D/g, '') as string,
+      phone: formPhone as string,
     }
 
     try {
