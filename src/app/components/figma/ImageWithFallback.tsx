@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
-import { cn } from '../../utils/cn';
+import React, { useState, useEffect } from 'react'
+import { cn } from '../../utils/cn'
 
 const ERROR_IMG_SRC =
-  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==';
+  'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg=='
 
-export function ImageWithFallback({ 
-  src, 
-  alt = '', 
-  className, 
-  ...props 
+export function ImageWithFallback({
+  src,
+  alt = '',
+  className,
+  loading = 'lazy',
+  ...props
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
-  const [didError, setDidError] = useState(false);
+  const [didError, setDidError] = useState(false)
+
+  useEffect(() => {
+    setDidError(false)
+  }, [src])
 
   return (
     <img
       src={didError ? ERROR_IMG_SRC : src}
       alt={didError ? 'Ошибка загрузки изображения' : alt}
       onError={() => setDidError(true)}
+      loading={didError ? undefined : loading}
       className={cn(
-        'inline-block object-cover', 
-        didError && 'bg-gray-100 p-4 object-contain', 
+        'inline-block object-cover',
+        didError && 'bg-gray-100 p-4 object-contain',
         className
       )}
       {...props}
     />
-  );
+  )
 }
