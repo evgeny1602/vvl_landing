@@ -371,8 +371,22 @@ export default function App() {
           <div className="bg-gradient-to-br from-[#1a1a24] to-[#12121a] border border-[#ff4d00]/30 rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(255,77,0,0.1)] relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff4d00] rounded-full blur-[120px] opacity-20 translate-x-1/2 -translate-y-1/2" />
 
-            <div className="uppercase tracking-widest text-[#ff4d00] font-bold text-sm mb-10">
+            <div className="uppercase tracking-widest text-[#ff4d00] font-bold text-sm mb-4">
               Как это выглядит
+            </div>
+
+            <div className="mb-8 mt-8">
+              <span className="text-2xl sm:text-3xl md:text-3xl font-['Barlow_Condensed'] font-black">
+                200
+              </span>
+              <span className="text-xl sm:text-2xl text-white/50 font-['Barlow_Condensed'] font-bold mt-4">
+                {' '}
+                ₽
+              </span>
+              <span className="text-sm sm:text-base text-white/50 mt-6">
+                {' '}
+                / игра (2 часа)
+              </span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-16">
