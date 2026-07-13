@@ -137,7 +137,7 @@ export default function App() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest text-[#ff4d00] mb-6">
               <Zap className="w-4 h-4" /> Сезон 2026 открыт
             </div>
-            <h1 className="font-['Barlow_Condensed'] font-black uppercase leading-[0.85] mb-6 md:mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60 text-[64px] sm:text-[96px]">
+            <h1 className="leading-24 pt-2 font-['Barlow_Condensed'] font-black uppercase mb-6 md:mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60 text-[64px] sm:text-[96px]">
               ИГРАЙ.
               <br />
               ПОБЕЖДАЙ.
@@ -254,7 +254,7 @@ export default function App() {
             </div>
 
             <div className="lg:w-1/2">
-              <h2 className="font-['Barlow_Condensed'] font-black uppercase mb-6 leading-[0.9] text-[64px]">
+              <h2 className="font-['Barlow_Condensed'] font-black uppercase mb-6 text-[64px] leading-18">
                 Одна лига.
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d00] to-orange-400">
@@ -521,7 +521,7 @@ export default function App() {
         <div className="absolute inset-0 bg-[#ff4d00] opacity-[0.03]" />
 
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-['Barlow_Condensed'] font-black uppercase mb-6 md:mb-8 leading-[0.9]">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-['Barlow_Condensed'] font-black uppercase mb-6 md:mb-8 leading-24">
             Хватит смотреть —<br />
             <span className="text-[#ff4d00]">начни играть</span>
           </h2>

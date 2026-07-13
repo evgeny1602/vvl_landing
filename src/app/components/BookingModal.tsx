@@ -23,13 +23,22 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     setLoading(true)
 
     const formData = new FormData(e.currentTarget)
+
+    const formPhone = formData.get('phone') as string
+
     const data: BookingData = {
       name: formData.get('name') as string,
-      phone: formData.get('phone') as string,
+      phone: formPhone.replace(/\D/g, '') as string,
     }
 
     try {
-      console.log('Отправка заявки:', data)
+      // console.log('Отправка заявки:', data)
+
+      await fetch('/api/users/promo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
       setStep(2)
     } catch (error) {
@@ -121,10 +130,6 @@ function FormStep({ onSubmit, isLoading }: FormStepProps) {
           >
             {isLoading ? 'Отправка...' : 'Забронировать место (200 ₽)'}
           </Button>
-
-          <p className="text-xs text-center text-white/40 mt-3">
-            Нажимая кнопку, вы соглашаетесь с правилами лиги
-          </p>
         </div>
       </form>
     </>
