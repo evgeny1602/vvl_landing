@@ -7,14 +7,36 @@ interface BookingModalProps {
   onClose: () => void;
 }
 
+interface BookingData {
+  name: string;
+  phone: string;
+}
+
 export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [step, setStep] = useState<1 | 2>(1);
-  
+  const [loading, setLoading] = useState(false);
+
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStep(2);
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data: BookingData = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+    };
+
+    try {
+      console.log('Отправка заявки:', data);
+      
+      setStep(2);
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleClose = () => {
@@ -24,81 +46,100 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-md bg-[#12121a] border border-white/10 rounded-xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">
+      <div className="relative w-full max-w-md bg-[#12121a] border border-white/10 rounded-xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">        
         <button 
           onClick={handleClose}
-          className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
+          className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10"
+          aria-label="Закрыть"
         >
           <X className="w-6 h-6" />
         </button>
 
         <div className="p-6 md:p-8">
           {step === 1 ? (
-            <>
-              <h2 className="text-2xl sm:text-3xl font-['Barlow_Condensed'] font-bold text-white uppercase mb-2">
-                Запись на <span className="text-[#ff4d00]">игру</span>
-              </h2>
-              <p className="text-white/60 mb-6">Оставьте заявку, и мы забронируем за вами место на площадке.</p>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-white/80 mb-1">Имя</label>
-                  <input 
-                    required
-                    type="text" 
-                    placeholder="Александр"
-                    className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-[#ff4d00] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-white/80 mb-1">Телефон / Telegram</label>
-                  <input 
-                    required
-                    type="text" 
-                    placeholder="+7 (999) 000-00-00"
-                    className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-[#ff4d00] transition-colors"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-white/80 mb-1">Уровень игры</label>
-                  <select 
-                    className="w-full bg-[#1a1a24] border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-[#ff4d00] transition-colors appearance-none"
-                  >
-                    <option>Новичок (Любитель)</option>
-                    <option>Средний (Уверенный)</option>
-                    <option>Профи (Спортшкола)</option>
-                  </select>
-                </div>
-
-                <div className="pt-4">
-                  <Button type="submit" className="w-full">
-                    Забронировать место (200 ₽)
-                  </Button>
-                  <p className="text-xs text-center text-white/40 mt-3">
-                    Нажимая кнопку, вы соглашаетесь с правилами лиги
-                  </p>
-                </div>
-              </form>
-            </>
+            <FormStep onSubmit={handleSubmit} isLoading={loading} />
           ) : (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 bg-[#ff4d00]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Check className="w-8 h-8 text-[#ff4d00]" />
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-['Barlow_Condensed'] font-bold text-white uppercase mb-2">
-                Заявка <span className="text-[#ff4d00]">принята!</span>
-              </h2>
-              <p className="text-white/70 mb-8">
-                Мы свяжемся с вами в течение 15 минут для подтверждения времени и оплаты.
-              </p>
-              <Button onClick={handleClose} variant="outline" className="w-full">
-                Отлично
-              </Button>
-            </div>
+            <SuccessStep onConfirm={handleClose} />
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+interface FormStepProps {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  isLoading: boolean;
+}
+
+function FormStep({ onSubmit, isLoading }: FormStepProps) {
+  return (
+    <>
+      <h2 className="text-2xl sm:text-3xl font-['Barlow_Condensed'] font-bold text-white uppercase mb-2">
+        Запись на <span className="text-[#ff4d00]">игру</span>
+      </h2>
+
+      <p className="text-white/60 mb-6 text-sm sm:text-base">
+        Оставьте заявку, и мы забронируем за вами место на площадке.
+      </p>
+
+      <form onSubmit={onSubmit} className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-1">Имя</label>
+
+          <input 
+            required
+            name="name"
+            type="text" 
+            placeholder="Александр"
+            className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-[#ff4d00] transition-colors"
+          />
+        </div>
+        
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-1">Телефон / Telegram</label>
+          
+          <input 
+            required
+            name="phone"
+            type="text" 
+            placeholder="+7 (999) 000-00-00"
+            className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-[#ff4d00] transition-colors"
+          />
+        </div>
+
+        <div className="pt-4">
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? 'Отправка...' : 'Забронировать место (200 ₽)'}
+          </Button>
+
+          <p className="text-xs text-center text-white/40 mt-3">
+            Нажимая кнопку, вы соглашаетесь с правилами лиги
+          </p>
+        </div>
+      </form>
+    </>
+  );
+}
+
+function SuccessStep({ onConfirm }: { onConfirm: () => void }) {
+  return (
+    <div className="text-center py-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+      <div className="w-16 h-16 bg-[#ff4d00]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+        <Check className="w-8 h-8 text-[#ff4d00]" />
+      </div>
+      
+      <h2 className="text-2xl sm:text-3xl font-['Barlow_Condensed'] font-bold text-white uppercase mb-2">
+        Заявка <span className="text-[#ff4d00]">принята!</span>
+      </h2>
+
+      <p className="text-white/70 mb-8 text-sm sm:text-base">
+        Мы свяжемся с вами в течение 15 минут для подтверждения времени и оплаты.
+      </p>
+      
+      <Button onClick={onConfirm} variant="outline" className="w-full">
+        Отлично
+      </Button>
     </div>
   );
 }
