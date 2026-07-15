@@ -91,7 +91,7 @@ interface FormStepProps {
 function FormStep({ onSubmit, isLoading }: FormStepProps) {
   return (
     <>
-      <h2 className="text-2xl sm:text-3xl font-['Barlow_Condensed'] font-bold text-white uppercase mb-2">
+      <h2 className="text-2xl sm:text-3xl font-barlow font-bold text-white uppercase mb-2">
         Запись на <span className="text-[#ff4d00]">игру</span>
       </h2>
 
@@ -150,7 +150,7 @@ function SuccessStep({ onConfirm }: { onConfirm: () => void }) {
         <Check className="w-8 h-8 text-[#ff4d00]" />
       </div>
 
-      <h2 className="text-2xl sm:text-3xl font-['Barlow_Condensed'] font-bold text-white uppercase mb-2">
+      <h2 className="text-2xl sm:text-3xl font-barlow font-bold text-white uppercase mb-2">
         Заявка <span className="text-[#ff4d00]">принята!</span>
       </h2>
 

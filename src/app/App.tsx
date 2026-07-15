@@ -100,7 +100,7 @@ export default function App() {
               alt="ВВЛ Логотип"
               className="w-12 h-12 object-contain"
             />
-            <span className="font-['Barlow_Condensed'] font-bold tracking-wide uppercase text-[20px]">
+            <span className="font-barlow font-bold tracking-wide uppercase text-[20px]">
               Вечерняя Волейбольная <span className="text-[#ff4d00]">Лига</span>
             </span>
           </div>
@@ -137,7 +137,7 @@ export default function App() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest text-[#ff4d00] mb-6">
               <Zap className="w-4 h-4" /> Сезон 2026 открыт
             </div>
-            <h1 className="leading-24 pt-2 font-['Barlow_Condensed'] font-black uppercase mb-6 md:mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60 text-[64px] sm:text-[96px]">
+            <h1 className="leading-24 pt-2 font-barlow font-black uppercase mb-6 md:mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60 text-[64px] sm:text-[96px]">
               ИГРАЙ.
               <br />
               ПОБЕЖДАЙ.
@@ -191,7 +191,7 @@ export default function App() {
       <section id="about" className="py-24 bg-[#0c0c14]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-['Barlow_Condensed'] font-bold uppercase mb-4">
+            <h2 className="text-4xl md:text-6xl font-barlow font-bold uppercase mb-4">
               Почему <span className="text-[#ff4d00]">мы?</span>
             </h2>
 
@@ -209,7 +209,7 @@ export default function App() {
                 <div className="w-14 h-14 bg-[#ff4d00]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#ff4d00] transition-colors">
                   <f.icon className="w-7 h-7 text-[#ff4d00] group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-xl font-['Barlow_Condensed'] uppercase mb-3 text-white font-bold">
+                <h3 className="text-xl font-barlow uppercase mb-3 text-white font-bold">
                   {f.title}
                 </h3>
                 <p className="text-white/60 text-sm leading-relaxed text-justify">
@@ -254,7 +254,7 @@ export default function App() {
             </div>
 
             <div className="lg:w-1/2">
-              <h2 className="font-['Barlow_Condensed'] font-black uppercase mb-6 text-[64px] leading-18">
+              <h2 className="font-barlow font-black uppercase mb-6 text-[64px] leading-18">
                 Одна лига.
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d00] to-orange-400">
@@ -292,7 +292,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
-              <h2 className="text-4xl md:text-6xl font-['Barlow_Condensed'] font-bold uppercase mb-4">
+              <h2 className="text-4xl md:text-6xl font-barlow font-bold uppercase mb-4">
                 Ближайшие <span className="text-[#ff4d00]">игры</span>
               </h2>
 
@@ -321,7 +321,7 @@ export default function App() {
                     <div className="text-[#ff4d00] font-bold text-sm uppercase tracking-wider mb-1">
                       {slot.day}
                     </div>
-                    <div className="text-2xl font-['Barlow_Condensed'] font-bold">
+                    <div className="text-2xl font-barlow font-bold">
                       {slot.time}
                     </div>
                   </div>
@@ -364,7 +364,7 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#09090f] to-[#12121a] z-0" />
 
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-['Barlow_Condensed'] font-bold uppercase mb-12">
+          <h2 className="text-4xl md:text-6xl font-barlow font-bold uppercase mb-12">
             Простые <span className="text-[#ff4d00]">условия</span>
           </h2>
 
@@ -376,10 +376,10 @@ export default function App() {
             </div>
 
             <div className="mb-8 mt-8">
-              <span className="text-2xl sm:text-3xl md:text-3xl font-['Barlow_Condensed'] font-black">
+              <span className="text-2xl sm:text-3xl md:text-3xl font-barlow font-black">
                 200
               </span>
-              <span className="text-xl sm:text-2xl text-white/50 font-['Barlow_Condensed'] font-bold mt-4">
+              <span className="text-xl sm:text-2xl text-white/50 font-barlow font-bold mt-4">
                 {' '}
                 ₽
               </span>
@@ -413,7 +413,7 @@ export default function App() {
       <section id="contacts" className="py-24 bg-[#09090f]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-['Barlow_Condensed'] font-bold uppercase mb-4">
+            <h2 className="text-4xl md:text-6xl font-barlow font-bold uppercase mb-4">
               Остались <span className="text-[#ff4d00]">вопросы?</span>
             </h2>
             <p className="text-white/60">
@@ -433,7 +433,7 @@ export default function App() {
               </div>
 
               <div className="flex-grow text-center md:text-left w-full">
-                <div className="font-bold font-['Barlow_Condensed'] text-3xl uppercase mb-1">
+                <div className="font-bold font-barlow text-3xl uppercase mb-1">
                   Сергей
                 </div>
                 <div className="text-[#ff4d00] text-sm uppercase tracking-widest font-bold mb-6">
@@ -478,7 +478,7 @@ export default function App() {
                 />
               </div>
               <div className="flex-grow text-center md:text-left w-full">
-                <div className="font-bold font-['Barlow_Condensed'] text-3xl uppercase mb-1">
+                <div className="font-bold font-barlow text-3xl uppercase mb-1">
                   Жора
                 </div>
                 <div className="text-[#ff4d00] text-sm uppercase tracking-widest font-bold mb-6">
@@ -521,7 +521,7 @@ export default function App() {
         <div className="absolute inset-0 bg-[#ff4d00] opacity-[0.03]" />
 
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-['Barlow_Condensed'] font-black uppercase mb-6 md:mb-8 leading-24">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-barlow font-black uppercase mb-6 md:mb-8 leading-24">
             Хватит смотреть —<br />
             <span className="text-[#ff4d00]">начни играть</span>
           </h2>
@@ -554,7 +554,7 @@ export default function App() {
             alt="ВВЛ"
             className="w-8 h-8 object-contain grayscale opacity-50"
           />
-          <span className="font-['Barlow_Condensed'] font-bold text-xl uppercase text-white/50">
+          <span className="font-barlow font-bold text-xl uppercase text-white/50">
             ВВЛ 2026
           </span>
         </div>
